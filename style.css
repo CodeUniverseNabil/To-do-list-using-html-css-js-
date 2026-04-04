@@ -1,74 +1,106 @@
-body{
+* {
+    box-sizing: border-box;
+}
+
+body {
     margin: 0;
     padding: 0;
-    background-color: palevioletred;
-    
+    background-color: #f0f4f8;
+    font-family: Arial, sans-serif;
 }
-.for{
+
+.for {
     display: flex;
     flex-direction: column;
-    gap: 34px;
+    gap: 30px;
+    padding-bottom: 40px;
 }
 
-header h1{
-    background-color: blue;
+header h1 {
+    background-color: #2c3e50;
+    color: #ffffff;
     text-align: center;
-    padding: 4rem;
-    width: 50vw;
-    margin: auto;
-
+    padding: 2rem;
+    width: 60vw;
+    margin: 30px auto 0 auto;
+    border-radius: 8px;
+    font-size: 1.4rem;
+    letter-spacing: 1px;
 }
 
-.main{
-    background-color: rgb(0, 101, 190);
+.main {
+    background-color: #2c3e50;
     width: 70vw;
-    /* height: 50vw; */
     margin: auto;
     display: flex;
-    gap: 34px;
-    padding: 4rem;
+    gap: 20px;
+    padding: 2rem;
+    border-radius: 8px;
+    align-items: center;
 }
 
 .create input {
-width: 20vw;
-height: 3vw;
-font-size: large;
-background-color: rgb(184, 155, 211);
-border: 2px solid red;
-/* display: inline-block */
-/* margin: auto; */
-
+    width: 22vw;
+    height: 44px;
+    font-size: 16px;
+    background-color: #f0f4f8;
+    border: 2px solid #1abc9c;
+    border-radius: 6px;
+    padding: 0 10px;
+    outline: none;
+    color: #2c3e50;
 }
 
-.create button{
- /* width: 20vw; */
- padding:6px 10px 16px 10px;
- font-size: 30px;
- margin-right: ;
-
+.create input:focus {
+    border-color: #16a085;
+    background-color: #ffffff;
 }
 
-.list{
-    background-color: bisque;
+.create button {
+    padding: 10px 22px;
+    font-size: 16px;
+    background-color: #1abc9c;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.create button:hover {
+    background-color: #16a085;
+}
+
+.list {
+    background-color: #ffffff;
     width: 70vw;
     margin: auto;
-    padding: 34px;
-    /* height: ; */
-    overflow: ;
+    padding: 24px;
+    border-radius: 8px;
+    border: 1px solid #dde3ea;
 }
-.ga{
-    background-color: rgb(240, 61, 61);
-    /* padding: 34px; */
-    height: 200px;
-    overflow: hidden;
-overflow-y: scroll;   
+
+.ga {
+    background-color: #f0f4f8;
+    border-radius: 6px;
+    height: 220px;
+    overflow-y: scroll;
+    padding: 10px;
 }
-.list ul{
+
+.list ul {
     list-style: decimal;
     display: flex;
     flex-direction: column;
-    gap: 40px;
-    font-size: 30px;
-    overflow: ;
+    gap: 16px;
+    font-size: 18px;
+    color: #2c3e50;
+    margin: 0;
+    padding-left: 24px;
+}
 
+.list ul li {
+    background-color: #ffffff;
+    padding: 8px 12px;
+    border-radius: 4px;
+    border-left: 4px solid #1abc9c;
 }
