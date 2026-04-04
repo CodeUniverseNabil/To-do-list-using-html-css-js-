@@ -1,0 +1,74 @@
+body{
+    margin: 0;
+    padding: 0;
+    background-color: palevioletred;
+    
+}
+.for{
+    display: flex;
+    flex-direction: column;
+    gap: 34px;
+}
+
+header h1{
+    background-color: blue;
+    text-align: center;
+    padding: 4rem;
+    width: 50vw;
+    margin: auto;
+
+}
+
+.main{
+    background-color: rgb(0, 101, 190);
+    width: 70vw;
+    /* height: 50vw; */
+    margin: auto;
+    display: flex;
+    gap: 34px;
+    padding: 4rem;
+}
+
+.create input {
+width: 20vw;
+height: 3vw;
+font-size: large;
+background-color: rgb(184, 155, 211);
+border: 2px solid red;
+/* display: inline-block */
+/* margin: auto; */
+
+}
+
+.create button{
+ /* width: 20vw; */
+ padding:6px 10px 16px 10px;
+ font-size: 30px;
+ margin-right: ;
+
+}
+
+.list{
+    background-color: bisque;
+    width: 70vw;
+    margin: auto;
+    padding: 34px;
+    /* height: ; */
+    overflow: ;
+}
+.ga{
+    background-color: rgb(240, 61, 61);
+    /* padding: 34px; */
+    height: 200px;
+    overflow: hidden;
+overflow-y: scroll;   
+}
+.list ul{
+    list-style: decimal;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    font-size: 30px;
+    overflow: ;
+
+}
