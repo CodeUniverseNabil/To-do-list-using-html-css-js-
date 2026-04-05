@@ -29,5 +29,5 @@ function getInput() {
 
 function remove(){
     let cll =document.getElementsByClassName("work_list")[0]
-    cll.innerHTML=""
+    cll.innerHTML()
 }
