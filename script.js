@@ -1,77 +1,52 @@
-function addlist(aa) {
-    let new_li = document.createElement('li')
-    
-    let delBtn = document.createElement("button")
-    delBtn.innerText = "del"
+function saveTasks() {
+    let items = document.getElementById("work_list").querySelectorAll("li");
+    let tasks = [];
+    items.forEach(function (li) {
+        tasks.push(li.firstChild.textContent);
+    });
+    localStorage.setItem("tasks", JSON.stringify(tasks));
+}
+function addTask(text) {
+    let li = document.createElement("li");
+    li.innerText=text
+    let delBtn = document.createElement("button");
     delBtn.style.marginLeft = "10px";
+    delBtn.innerText = "Del";
     delBtn.style.backgroundColor = "#e74c3c";
     delBtn.style.color = "white";
-    delBtn.style.border = "none"; delBtn.style.borderRadius = "4px";
+    delBtn.style.border = "none";
+    delBtn.style.borderRadius = "4px";
     delBtn.style.padding = "2px 8px";
     delBtn.style.cursor = "pointer";
-    new_li.innerText = aa
-
-    new_li.appendChild(delBtn)
-    document.getElementById("work_list").appendChild(new_li)
-        delBtn.onclick = function () {
-        new_li.remove()
-
-    }
-
+    li.appendChild(delBtn);
+    delBtn.onclick = function () {
+        li.remove();
+        saveTasks();
+    };
+    document.getElementById("work_list").appendChild(li);
 }
-
-function save() {
-    let list = document.getElementById("work_list").querySelectorAll("li")
-    // let lia =list.getElementsByTagName("li")
-    let save_data = []
-    for (let index = 0; index < list.length; index++) {
-        const element = list[index]
-        save_data.push(element.firstChild.textContent)
-
-
-    }
-    localStorage.setItem("alltask", JSON.stringify(save_data))
-}
-
 function getInput() {
-    let work = document.getElementById("input_work")
-    let new_li = document.createElement('li')
-    let to_text = work.value.trim()
-    let delBtn = document.createElement("button")
-    delBtn.innerText = "del"
-    delBtn.style.marginLeft = "10px";
-    delBtn.style.backgroundColor = "#e74c3c";
-    delBtn.style.color = "white";
-    delBtn.style.border = "none"; delBtn.style.borderRadius = "4px";
-    delBtn.style.padding = "2px 8px";
-    delBtn.style.cursor = "pointer";
-    new_li.innerText = to_text
-
-    new_li.appendChild(delBtn)
-
-    if (to_text.length >= 4) {
-        addlist(to_text)
-        work.value = ""
-        save()
+    let work = document.getElementById("input_work");
+    let data = work.value.trim();
+    if (data.length >= 4) {
+        addTask(data);
+        saveTasks();
+        work.value = "";
     } else {
-        alert("input lomg")
-
-        work.value = ""
-        save()
+        alert("That task is too short (min 4 characters)");
+        work.value = "";
     }
-
 }
-
 function remove() {
-    document.getElementById("work_list").innerHTML = ""
-    save()
+    document.getElementById("work_list").innerHTML = "";
+    localStorage.removeItem("tasks");
 }
-
+// Load saved tasks on page load
 window.onload = function () {
-    let data = localStorage.getItem("alltask")
-    if (data) {
-        JSON.parse(data).forEach(function (text) {
-            addlist(text)
-        })
+    let saved = localStorage.getItem("tasks");
+    if (saved) {
+        JSON.parse(saved).forEach(function (task) {
+            addTask(task);
+        });
     }
-}
+};
