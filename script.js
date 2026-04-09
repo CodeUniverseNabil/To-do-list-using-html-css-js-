@@ -1,7 +1,7 @@
 var count = 0
 // var len= 0
 function addTask(text) {
-    // list_have()
+
     let li = document.createElement("li");
     li.innerText = text
     let delBtn = document.createElement("button");
@@ -22,25 +22,54 @@ function addTask(text) {
     doneBtn.style.borderRadius = "4px";
     doneBtn.style.padding = "2px 8px";
     doneBtn.style.cursor = "pointer";
+
+    doneBtn.id = "doneBtn"
     li.appendChild(doneBtn)
     li.appendChild(delBtn);
-    
+
     doneBtn.onclick = function () {
         doneBtn.remove()
-        
+
         count += 1
         document.getElementById("is").innerText = count
-        stroge()
+        done()
+
+
+    }
+    function done() {
+        localStorage.setItem("done", count)
+    }
+    function all() {
+
+        let len = document.getElementById("work_list").childElementCount
+        document.getElementById("not").innerText = len
     }
     delBtn.onclick = function () {
         li.remove();
         saveTasks();
-        count -= 1
-        document.getElementById("is").innerText = count
-        stroge()
+        if (0 == count) {
+            document.getElementById("is").innerText = 0
+            done()
+
+        } else if (
+            li.querySelector("#doneBtn")    //done that task
+        ) {
+            document.getElementById("is").innerText = count
+            done()
+
+        } else {
+
+            count -= 1
+            document.getElementById("is").innerText = count
+            done()
+
+        }
+
     };
     document.getElementById("work_list").appendChild(li);
-    
+    saveTasks()
+    all()
+
 }
 function getInput() {
     let work = document.getElementById("input_work");
@@ -58,6 +87,8 @@ function getInput() {
 function remove() {
     document.getElementById("work_list").innerHTML = "";
     localStorage.removeItem("tasks");
+    document.getElementById("is").innerText = ""
+
 }
 // Load saved tasks on page load
 window.onload = function () {
@@ -67,27 +98,15 @@ window.onload = function () {
             addTask(task);
         });
     }
+    let done = localStorage.getItem("done")
+    document.getElementById("is").innerText = done
+    done()
+
+
+
 };
 
-function stroge() {
-    let allist = list_have()
-    
-    
-    
-    
-    
-    localStorage.setItem("baki ache ",ernai)
-    
-}
 
-
-function list_have() {
-    let that = JSON.parse(localStorage.getItem("tasks"))
-    let len = that.length
-    
-    stroge()
-    return len
-}
 
 function saveTasks() {
     let items = document.getElementById("work_list").querySelectorAll("li");
@@ -96,6 +115,6 @@ function saveTasks() {
         tasks.push(li.firstChild.textContent);
     });
     localStorage.setItem("tasks", JSON.stringify(tasks));
-    localStorage.setItem("done", count)
+
 }
 // console.log(len)
