@@ -104,3 +104,24 @@ header h1 {
     border-radius: 4px;
     border-left: 4px solid #1abc9c;
 }
+
+.time{
+    display:flex;
+    gap: 3rem;
+    background-color: #1abc9c;
+    margin: auto;
+    min-width: 70vw;
+    justify-content: space-around;
+    padding: 24px;
+    border-radius: 8px;
+}
+
+#is,#not {
+    background: rgb(15, 57, 108);
+    padding: 0.4rem;
+    font-size: 18px;
+    border-radius: 12px;
+    color: #f0f4f8;
+    
+
+}
